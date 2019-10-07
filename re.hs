@@ -28,3 +28,15 @@ deal (a:ax) (n,y) | (not $ elem a y) && (elem a n) = deal ax (n',a:y)
                   | (not $ elem a y) && (not $ elem a n)= deal ax (a:n,y)
                   | otherwise = deal ax (n,y)
                   where n' = [x | x <- n , x /= a]
+{-
+--other answer,it so concise
+module Dups where
+
+import Data.Char
+
+duplicateEncode :: String -> String
+duplicateEncode xs = map encode xs' where
+  xs' = map toLower xs
+  encode c = if length (filter (== c) xs') > 1 then ')' else '('
+
+-}
